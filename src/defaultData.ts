@@ -19,5 +19,5 @@ export const DEFAULT_PRODUCT: TourProduct = {
     { name: '八达岭长城', tagline: '不到长城非好汉', keyword: 'great wall badaling' },
     { name: '颐和园', tagline: '皇家园林典范', keyword: 'summer palace beijing' },
   ],
-  theme: 'pink',
+  theme: 'modern',
 }

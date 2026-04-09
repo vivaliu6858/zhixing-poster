@@ -84,14 +84,15 @@ interface Schedule {
 - [x] 端到端实测：两接口都返回 /output/xxx 同源URL，html2canvas 无 CORS 风险
 - 提交：backend commit b926dd3
 
-### 阶段 B：前端接入图片 API（进行中）
-- [ ] types.ts 加 `heroImageUrl?: string`，`attractions: Attraction[]`（含可选 imageUrl）
-- [ ] defaultData 给默认景点列表（Beijing 4 attraction）
-- [ ] PosterPreview 模块3 用 heroImageUrl 作为背景图，无则退回渐变占位
-- [ ] PosterPreview 模块6 从 product.attractions 渲染（不再硬编码北京），用 imageUrl 作为背景
-- [ ] FormPanel 加两个按钮：「抓景点图」调 /api/photos/search，「生成主视觉」调 /api/hero/generate
-- [ ] 加载态 / 错误 toast
-- [ ] npm run build + nginx 验证
+### 阶段 B：前端接入图片 API ✅ 已完成
+- [x] types.ts 加 `heroImageUrl?: string`，`attractions: Attraction[]`（含可选 imageUrl）
+- [x] defaultData 给默认景点列表（Beijing 4 attraction）
+- [x] PosterPreview 模块3 用 heroImageUrl 作为背景图，无则退回渐变占位
+- [x] PosterPreview 模块6 从 product.attractions 渲染（不再硬编码北京），用 imageUrl 作为背景
+- [x] FormPanel 加两个按钮：「抓景点图」调 /api/photos/search，「生成主视觉」调 /api/hero/generate
+- [x] 加载态 / 错误 toast
+- [x] npm run build + nginx 验证
+- [x] bug fix: 改景点名时清空旧 imageUrl
 
 ### 阶段 C：行程文档解析串联（下一阶段）
 - [ ] 前端加 upload docx/txt 入口
@@ -99,3 +100,15 @@ interface Schedule {
 - [ ] 让用户可在预填表单上做微调
 
 ### 阶段 D：移动端响应式 + Vercel部署（再下一阶段）
+
+## 2026-04-10 · 第三轮开发：8主题重构
+
+### 阶段 E：主题架构重构 + 8套主题 ✅ 已完成
+- [x] types.ts 扩展 Theme 类型（ThemePalette 12色 / ThemeFonts 标题+正文+数字 / borderRadius / letterSpacing / moodPrompt）
+- [x] themes.ts 重写：8套完整主题（modern/guochao/joyful/nature/foodie/heritage/family/roadtrip）
+- [x] PosterPreview 全面读取新字段（palette/fonts/borderRadius/letterSpacing）
+- [x] ThemeSelector 适配新结构（2列布局，显示 headerBg 预览+description）
+- [x] Workspace.tsx 即梦 prompt 改用 theme.moodPrompt（删除旧 JIMENG_STYLE map）
+- [x] index.html 加载 Google Fonts via jsdelivr CDN（含 ZCOOL XiaoWei/KuaiLe/QingKe、Noto Sans/Serif SC、Lilita One、Oswald、Playfair Display）
+- [x] defaultData 默认主题改为 modern
+- [x] npm run build 通过

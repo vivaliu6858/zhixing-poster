@@ -6,18 +6,9 @@ import FormPanel from '../components/FormPanel'
 import PosterPreview from '../components/PosterPreview'
 import { getTheme } from '../themes'
 
-const JIMENG_STYLE: Record<string, string> = {
-  pink: '温暖粉色调，周围飘落樱花花瓣，春日明媚阳光，浪漫柔和氛围',
-  orange: '橙色暖色调，活力四射，阳光灿烂，充满生机',
-  deepblue: '深蓝夜空色调，星光璀璨，庄重大气，高端感',
-  purpleblue: '中国红配金色，国潮风格，大气磅礴，传统纹样装饰',
-  green: '自然绿色调，清新雅致，生机盎然',
-  dreamy: '粉紫渐变色调，梦幻光效，星光点缀，浪漫唯美',
-}
-
 function buildJimengPrompt(p: TourProduct) {
-  const style = JIMENG_STYLE[p.theme] ?? JIMENG_STYLE.pink
-  return `${p.destination}旅游主题横版海报主视觉图，3D微缩风格，打开的精致复古行李箱中展现${p.destination}地标建筑的微缩模型，建筑细节精致逼真，${style}，高品质3D渲染，构图留出天空区域、主体偏中下，适合作为旅游海报横条banner，构图3:2比例`
+  const theme = getTheme(p.theme)
+  return `${p.destination}旅游主题横版海报主视觉图，3D微缩风格，打开的精致复古行李箱中展现${p.destination}地标建筑的微缩模型，建筑细节精致逼真，${theme.moodPrompt}，高品质3D渲染，构图留出天空区域、主体偏中下，适合作为旅游海报横条banner，构图3:2比例`
 }
 
 export default function Workspace() {
@@ -183,7 +174,7 @@ export default function Workspace() {
                 onClick={handleDownload}
                 style={{
                   flex: 1, padding: '12px', borderRadius: 10,
-                  background: theme.primary, color: 'white',
+                  background: theme.palette.primary, color: 'white',
                   border: 'none', fontSize: 15, fontWeight: 700, cursor: 'pointer',
                 }}
               >📥 下载高清图</button>
