@@ -93,13 +93,13 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
         </div>
       </div>
 
-      {/* 模块3：主视觉区 */}
+      {/* 模块3：主视觉区 — 750×500 = 3:2 比例，匹配即梦出图 */}
       <div style={{
-        height: 320,
+        height: 500,
         background: product.heroImageUrl ? '#000' : theme.headerBg,
         backgroundImage: product.heroImageUrl ? `url(${product.heroImageUrl})` : undefined,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center 45%',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',

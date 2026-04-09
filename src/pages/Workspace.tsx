@@ -17,7 +17,7 @@ const JIMENG_STYLE: Record<string, string> = {
 
 function buildJimengPrompt(p: TourProduct) {
   const style = JIMENG_STYLE[p.theme] ?? JIMENG_STYLE.pink
-  return `3D微缩${p.destination}旅游场景海报主视觉图，打开的精致复古行李箱中展现天安门广场、故宫等${p.destination}地标建筑的微缩模型，建筑细节精致逼真，${style}，高品质3D渲染效果，适合旅游海报使用，竖版构图9:16比例`
+  return `${p.destination}旅游主题横版海报主视觉图，3D微缩风格，打开的精致复古行李箱中展现${p.destination}地标建筑的微缩模型，建筑细节精致逼真，${style}，高品质3D渲染，构图留出天空区域、主体偏中下，适合作为旅游海报横条banner，构图3:2比例`
 }
 
 export default function Workspace() {
@@ -84,7 +84,7 @@ export default function Workspace() {
       const resp = await fetch('/api/hero/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, ratio: '9:16', poll_seconds: 150 }),
+        body: JSON.stringify({ prompt, ratio: '3:2', poll_seconds: 150 }),
       })
       const data = await resp.json()
       if (!data.success) throw new Error(data.error || '生成失败')
