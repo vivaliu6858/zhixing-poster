@@ -13,5 +13,11 @@ export const DEFAULT_PRODUCT: TourProduct = {
     { date: '4月14.20.21日', originalPrice: 3299, currentPrice: 2899 },
     { date: '4月28日', originalPrice: 3499, currentPrice: 3099 },
   ],
+  attractions: [
+    { name: '天坛公园', tagline: '皇家祭天圣地', keyword: 'temple of heaven beijing' },
+    { name: '故宫博物院', tagline: '探秘紫禁城', keyword: 'forbidden city beijing' },
+    { name: '八达岭长城', tagline: '不到长城非好汉', keyword: 'great wall badaling' },
+    { name: '颐和园', tagline: '皇家园林典范', keyword: 'summer palace beijing' },
+  ],
   theme: 'pink',
 }

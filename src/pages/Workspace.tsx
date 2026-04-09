@@ -25,6 +25,9 @@ export default function Workspace() {
   const [generating, setGenerating] = useState(false)
   const [generated, setGenerated] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [fetchingPhotos, setFetchingPhotos] = useState(false)
+  const [generatingHero, setGeneratingHero] = useState(false)
+  const [statusMsg, setStatusMsg] = useState<string | null>(null)
   const posterRef = useRef<HTMLDivElement>(null)
 
   const handleGenerate = useCallback(async () => {
@@ -33,6 +36,68 @@ export default function Workspace() {
     setGenerating(false)
     setGenerated(true)
   }, [])
+
+  const handleFetchPhotos = useCallback(async () => {
+    if (!product.attractions.length) return
+    setFetchingPhotos(true)
+    setStatusMsg('正在从 Pexels 抓取景点图...')
+    try {
+      const resp = await fetch('/api/photos/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          queries: product.attractions.map(a => ({
+            name: a.name,
+            keyword: a.keyword || a.name,
+          })),
+        }),
+      })
+      const data = await resp.json()
+      if (!data.success) throw new Error(data.error || '抓取失败')
+      const urlMap = new Map<string, string>()
+      for (const r of data.results || []) {
+        if (r.url) urlMap.set(r.name, r.url)
+      }
+      setProduct(p => ({
+        ...p,
+        attractions: p.attractions.map(a => ({
+          ...a,
+          imageUrl: urlMap.get(a.name) || a.imageUrl,
+        })),
+      }))
+      const ok = Array.from(urlMap.keys()).length
+      setStatusMsg(`✅ 成功抓取 ${ok}/${product.attractions.length} 张景点图`)
+      setTimeout(() => setStatusMsg(null), 3000)
+    } catch (e: unknown) {
+      setStatusMsg('❌ 抓图失败：' + (e instanceof Error ? e.message : String(e)))
+      setTimeout(() => setStatusMsg(null), 5000)
+    } finally {
+      setFetchingPhotos(false)
+    }
+  }, [product.attractions])
+
+  const handleGenerateHero = useCallback(async () => {
+    setGeneratingHero(true)
+    setStatusMsg('正在用即梦AI生成主视觉图，大约需要30-90秒...')
+    try {
+      const prompt = buildJimengPrompt(product)
+      const resp = await fetch('/api/hero/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, ratio: '9:16', poll_seconds: 150 }),
+      })
+      const data = await resp.json()
+      if (!data.success) throw new Error(data.error || '生成失败')
+      setProduct(p => ({ ...p, heroImageUrl: data.url }))
+      setStatusMsg('✅ 主视觉图已生成')
+      setTimeout(() => setStatusMsg(null), 3000)
+    } catch (e: unknown) {
+      setStatusMsg('❌ 主视觉生成失败：' + (e instanceof Error ? e.message : String(e)))
+      setTimeout(() => setStatusMsg(null), 5000)
+    } finally {
+      setGeneratingHero(false)
+    }
+  }, [product])
 
   const handleDownload = useCallback(async () => {
     if (!posterRef.current) return
@@ -85,6 +150,11 @@ export default function Workspace() {
           onGenerate={handleGenerate}
           generating={generating}
           generated={generated}
+          onFetchPhotos={handleFetchPhotos}
+          fetchingPhotos={fetchingPhotos}
+          onGenerateHero={handleGenerateHero}
+          generatingHero={generatingHero}
+          statusMsg={statusMsg}
         />
       </div>
 

@@ -7,6 +7,11 @@ interface Props {
   onGenerate: () => void
   generating: boolean
   generated: boolean
+  onFetchPhotos: () => void
+  fetchingPhotos: boolean
+  onGenerateHero: () => void
+  generatingHero: boolean
+  statusMsg: string | null
 }
 
 const inputStyle: React.CSSProperties = {
@@ -24,7 +29,10 @@ const sectionStyle: React.CSSProperties = {
   boxShadow: 'rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px',
 }
 
-export default function FormPanel({ product, onChange, onGenerate, generating, generated }: Props) {
+export default function FormPanel({
+  product, onChange, onGenerate, generating, generated,
+  onFetchPhotos, fetchingPhotos, onGenerateHero, generatingHero, statusMsg,
+}: Props) {
   const set = (key: keyof TourProduct, val: unknown) =>
     onChange({ ...product, [key]: val })
 
@@ -107,6 +115,94 @@ export default function FormPanel({ product, onChange, onGenerate, generating, g
           color: '#999', cursor: 'pointer', fontSize: 14, marginTop: 4,
         }}>+ 添加班期</button>
       </div>
+
+      {/* 景点列表 */}
+      <div style={sectionStyle}>
+        <div style={{ fontSize: 15, fontWeight: 700, color: '#222', marginBottom: 12 }}>景点（4个）</div>
+        {product.attractions.map((a, i) => (
+          <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'center' }}>
+            <input
+              style={{ ...inputStyle, flex: 1 }}
+              placeholder="景点名"
+              value={a.name}
+              onChange={e => {
+                const next = [...product.attractions]
+                next[i] = { ...next[i], name: e.target.value }
+                set('attractions', next)
+              }}
+            />
+            <input
+              style={{ ...inputStyle, flex: 1 }}
+              placeholder="一句话描述"
+              value={a.tagline}
+              onChange={e => {
+                const next = [...product.attractions]
+                next[i] = { ...next[i], tagline: e.target.value }
+                set('attractions', next)
+              }}
+            />
+            {a.imageUrl && <span style={{ fontSize: 14, color: '#4caf50' }}>✓</span>}
+          </div>
+        ))}
+        <div style={{ fontSize: 11, color: '#999', marginBottom: 8 }}>
+          提示：中文景点名可能搜不到国外图，可在景点名里直接填英文关键词
+        </div>
+        <button
+          onClick={onFetchPhotos}
+          disabled={fetchingPhotos}
+          style={{
+            width: '100%', padding: '10px', borderRadius: 8,
+            background: fetchingPhotos ? '#ccc' : '#2196f3',
+            color: 'white', border: 'none', cursor: fetchingPhotos ? 'not-allowed' : 'pointer',
+            fontSize: 14, fontWeight: 600,
+          }}
+        >
+          {fetchingPhotos ? '抓图中...' : '🖼 一键抓景点图 (Pexels)'}
+        </button>
+      </div>
+
+      {/* AI 主视觉 */}
+      <div style={sectionStyle}>
+        <div style={{ fontSize: 15, fontWeight: 700, color: '#222', marginBottom: 12 }}>AI 主视觉图</div>
+        {product.heroImageUrl ? (
+          <div style={{ marginBottom: 8 }}>
+            <img src={product.heroImageUrl} alt="hero" style={{
+              width: '100%', borderRadius: 8, display: 'block',
+            }} />
+          </div>
+        ) : (
+          <div style={{
+            height: 80, borderRadius: 8, background: '#f5f5f5',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 12, color: '#999', marginBottom: 8,
+          }}>
+            尚未生成
+          </div>
+        )}
+        <button
+          onClick={onGenerateHero}
+          disabled={generatingHero}
+          style={{
+            width: '100%', padding: '10px', borderRadius: 8,
+            background: generatingHero ? '#ccc' : '#9c27b0',
+            color: 'white', border: 'none', cursor: generatingHero ? 'not-allowed' : 'pointer',
+            fontSize: 14, fontWeight: 600,
+          }}
+        >
+          {generatingHero ? '即梦AI生成中（约1-2分钟）...' : '✨ AI生成主视觉图（即梦）'}
+        </button>
+      </div>
+
+      {/* 状态消息 */}
+      {statusMsg && (
+        <div style={{
+          padding: '10px 14px', borderRadius: 8, background: '#fff3cd',
+          color: '#856404', fontSize: 13, marginBottom: 12,
+          border: '1px solid #ffeeba',
+        }}>
+          {statusMsg}
+        </div>
+      )}
 
       {/* 配色风格 */}
       <div style={sectionStyle}>

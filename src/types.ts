@@ -6,6 +6,13 @@ export interface Schedule {
   currentPrice: number
 }
 
+export interface Attraction {
+  name: string
+  tagline: string
+  keyword?: string  // Pexels 搜索词，默认等于 name
+  imageUrl?: string // /output/photos/xxx.jpg （由 /api/photos/search 回填）
+}
+
 export interface TourProduct {
   name: string
   departureCity: string
@@ -15,6 +22,8 @@ export interface TourProduct {
   subtitle: string
   tags: string[]
   schedules: Schedule[]
+  attractions: Attraction[]
+  heroImageUrl?: string  // /output/hero/xxx.jpg （由 /api/hero/generate 回填）
   theme: ThemeId
 }
 

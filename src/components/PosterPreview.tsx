@@ -96,27 +96,32 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
       {/* 模块3：主视觉区 */}
       <div style={{
         height: 320,
-        background: theme.headerBg,
+        background: product.heroImageUrl ? '#000' : theme.headerBg,
+        backgroundImage: product.heroImageUrl ? `url(${product.heroImageUrl})` : undefined,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
       }}>
-        <div style={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
-          <div style={{
-            fontSize: 48, fontWeight: 900, color: 'rgba(255,255,255,0.15)',
-            letterSpacing: 8,
-          }}>UPGRADE</div>
-          <div style={{
-            color: 'white', fontSize: 22, fontWeight: 700, marginTop: 8,
-            border: '2px solid rgba(255,255,255,0.5)',
-            padding: '8px 24px', borderRadius: 8, display: 'inline-block',
-          }}>全新升级 · 品质之旅</div>
-          <div style={{
-            color: 'rgba(255,255,255,0.7)', fontSize: 14, marginTop: 16,
-          }}>主视觉图 · 即梦AI生成后替换</div>
-        </div>
+        {!product.heroImageUrl && (
+          <div style={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
+            <div style={{
+              fontSize: 48, fontWeight: 900, color: 'rgba(255,255,255,0.15)',
+              letterSpacing: 8,
+            }}>UPGRADE</div>
+            <div style={{
+              color: 'white', fontSize: 22, fontWeight: 700, marginTop: 8,
+              border: '2px solid rgba(255,255,255,0.5)',
+              padding: '8px 24px', borderRadius: 8, display: 'inline-block',
+            }}>全新升级 · 品质之旅</div>
+            <div style={{
+              color: 'rgba(255,255,255,0.7)', fontSize: 14, marginTop: 16,
+            }}>主视觉图 · 点击左侧「AI生成主视觉」按钮</div>
+          </div>
+        )}
         <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0, height: 60,
           background: 'linear-gradient(to bottom, transparent, #ffffff)',
@@ -185,14 +190,18 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
         <div style={{
           background: theme.headerBg, padding: '12px 20px',
           color: 'white', fontSize: 18, fontWeight: 700,
-        }}>🏛 京华礼赞</div>
+        }}>🏛 {product.destination}必游景点</div>
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr',
           gap: 2, background: '#e0e0e0',
         }}>
-          {['天坛公园', '故宫博物院', '八达岭长城', '颐和园'].map((site, i) => (
-            <div key={site} style={{
-              height: 150, background: theme.sectionBg,
+          {product.attractions.map(site => (
+            <div key={site.name} style={{
+              height: 150,
+              background: site.imageUrl ? '#333' : theme.sectionBg,
+              backgroundImage: site.imageUrl ? `url(${site.imageUrl})` : undefined,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
               position: 'relative', overflow: 'hidden',
               display: 'flex', alignItems: 'flex-end',
             }}>
@@ -204,9 +213,9 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
                 position: 'relative', zIndex: 1, padding: '12px 16px',
                 color: 'white',
               }}>
-                <div style={{ fontWeight: 700, fontSize: 16 }}>{site}</div>
+                <div style={{ fontWeight: 700, fontSize: 16 }}>{site.name}</div>
                 <div style={{ fontSize: 12, opacity: 0.8, marginTop: 2 }}>
-                  {['皇家祭天圣地', '探秘紫禁城', '不到长城非好汉', '皇家园林典范'][i]}
+                  {site.tagline}
                 </div>
               </div>
             </div>

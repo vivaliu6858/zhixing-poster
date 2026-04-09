@@ -70,3 +70,32 @@ interface Schedule {
 - 移动端响应式优化
 - 行程文本解析（Claude API解析docx上传）
 - Vercel部署
+
+## 2026-04-09 晚 · 第二轮开发
+
+### 架构变化
+- 后端 Flask 在 /opt/zhixing-backend 已经 systemd 起服务 zhixing-backend（开机自启）
+- nginx v6858.top: 80 端口 → /opt/zhixing-poster/dist 静态，/api/ 代理 127.0.0.1:5000
+- 后端代码和前端代码在两个仓库，前端是纯客户端+html2canvas
+
+### 阶段 A：后端 Pexels + 即梦 接口 ✅ 已完成
+- [x] /api/photos/search 批量拉 Pexels 景点图，下载到 web_output/photos/
+- [x] /api/hero/generate 调 dreamina text2image CLI 生成主视觉，同步等 120s
+- [x] 端到端实测：两接口都返回 /output/xxx 同源URL，html2canvas 无 CORS 风险
+- 提交：backend commit b926dd3
+
+### 阶段 B：前端接入图片 API（进行中）
+- [ ] types.ts 加 `heroImageUrl?: string`，`attractions: Attraction[]`（含可选 imageUrl）
+- [ ] defaultData 给默认景点列表（Beijing 4 attraction）
+- [ ] PosterPreview 模块3 用 heroImageUrl 作为背景图，无则退回渐变占位
+- [ ] PosterPreview 模块6 从 product.attractions 渲染（不再硬编码北京），用 imageUrl 作为背景
+- [ ] FormPanel 加两个按钮：「抓景点图」调 /api/photos/search，「生成主视觉」调 /api/hero/generate
+- [ ] 加载态 / 错误 toast
+- [ ] npm run build + nginx 验证
+
+### 阶段 C：行程文档解析串联（下一阶段）
+- [ ] 前端加 upload docx/txt 入口
+- [ ] 调 /api/parse 拿结构化 JSON，映射到 TourProduct
+- [ ] 让用户可在预填表单上做微调
+
+### 阶段 D：移动端响应式 + Vercel部署（再下一阶段）
