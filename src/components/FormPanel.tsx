@@ -127,7 +127,7 @@ export default function FormPanel({
               value={a.name}
               onChange={e => {
                 const next = [...product.attractions]
-                next[i] = { ...next[i], name: e.target.value }
+                next[i] = { ...next[i], name: e.target.value, imageUrl: undefined }
                 set('attractions', next)
               }}
             />
