@@ -8,7 +8,7 @@ import { getTheme } from '../themes'
 
 function buildJimengPrompt(p: TourProduct) {
   const theme = getTheme(p.theme)
-  return `${p.destination}旅游主题横版海报主视觉图，3D微缩风格，打开的精致复古行李箱中展现${p.destination}地标建筑的微缩模型，建筑细节精致逼真，${theme.moodPrompt}，高品质3D渲染，构图留出天空区域、主体偏中下，适合作为旅游海报横条banner，构图3:2比例`
+  return `${p.destination}旅游主题横版海报主视觉图，${theme.moodPrompt}，展现${p.destination}标志性景观和地标建筑，高品质渲染，构图留出天空区域、主体偏中下，适合作为旅游海报横条banner，3:2比例`
 }
 
 export default function Workspace() {

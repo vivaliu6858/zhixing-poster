@@ -24,11 +24,11 @@ export const THEMES: Theme[] = [
       heading: '"Noto Sans SC", "Helvetica Neue", sans-serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"DIN Alternate", "Noto Sans SC", sans-serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=Noto+Sans+SC:wght@400;500;700;900',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@400;500;700;900',
     },
     borderRadius: { button: 8, card: 20, large: 32, pill: 50 },
     letterSpacing: { heading: -0.44, body: 0 },
-    moodPrompt: '极简白底，Airbnb风格，干净留白，黑白灰+一抹红色点缀，现代摄影质感',
+    moodPrompt: '航拍俯瞰视角，极简构图，大面积留白，黑白摄影质感加一抹红色点缀，城市天际线与地标建筑，杂志封面级摄影，现代高级感',
   },
 
   // ─── 2. 国潮 Guochao ─── 朱砂红+鎏金+毛笔字
@@ -54,11 +54,11 @@ export const THEMES: Theme[] = [
       heading: '"ZCOOL XiaoWei", "Noto Serif SC", serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"Noto Serif SC", serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700',
     },
     borderRadius: { button: 4, card: 12, large: 16, pill: 50 },
     letterSpacing: { heading: 2, body: 0.5 },
-    moodPrompt: '中国传统美学，朱砂红配鎏金，祥云纹样，水墨意境，国潮复古，大气磅礴',
+    moodPrompt: '国潮插画风格，朱砂红与鎏金配色，祥云纹样边框，水墨晕染背景，地标建筑以工笔画风格呈现，中国传统美学与现代设计融合，大气磅礴',
   },
 
   // ─── 3. 乐游 Joyful ─── 橙黄+草绿+POP字
@@ -84,11 +84,11 @@ export const THEMES: Theme[] = [
       heading: '"ZCOOL KuaiLe", "Noto Sans SC", sans-serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"Lilita One", "Noto Sans SC", sans-serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&family=Lilita+One',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&family=Lilita+One',
     },
     borderRadius: { button: 12, card: 24, large: 32, pill: 50 },
     letterSpacing: { heading: 0, body: 0 },
-    moodPrompt: '欢乐明亮，橙黄配草绿，卡通POP风格，阳光灿烂，活力四射，适合亲子出游',
+    moodPrompt: '3D卡通渲染风格，明亮橙黄色调，Q版地标建筑和可爱旅行元素，行李箱和地图散落，蓝天白云草地，活泼欢快POP海报风，适合年轻人出游',
   },
 
   // ─── 4. 自然 Nature ─── 森林绿+米白+衬线
@@ -114,11 +114,11 @@ export const THEMES: Theme[] = [
       heading: '"Noto Serif SC", serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"Noto Serif SC", serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700',
     },
     borderRadius: { button: 8, card: 16, large: 24, pill: 50 },
     letterSpacing: { heading: 0.5, body: 0.2 },
-    moodPrompt: '自然清新，森林绿调，阳光透过树叶，清晨薄雾，鸟语花香，生态环保氛围',
+    moodPrompt: '自然风光摄影，森林绿色调，阳光穿透树冠洒下光斑，晨雾缭绕的山谷与湖泊，地标建筑隐现于自然之中，国家地理杂志风格，治愈系氛围',
   },
 
   // ─── 5. 美食 Foodie ─── 暖红+奶油+手写体
@@ -144,11 +144,11 @@ export const THEMES: Theme[] = [
       heading: '"ZCOOL QingKe HuangYou", "Noto Sans SC", sans-serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"Lilita One", "Noto Sans SC", sans-serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;500;700&family=Lilita+One',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;500;700&family=Lilita+One',
     },
     borderRadius: { button: 12, card: 20, large: 28, pill: 50 },
     letterSpacing: { heading: -0.18, body: 0 },
-    moodPrompt: '美食诱惑，暖红配奶油色，烟火气息，热腾腾的地道小吃，灯笼红光映照',
+    moodPrompt: '美食摄影风格，暖红与奶油色调，当地特色美食和食材环绕地标建筑，热气腾腾的烟火气，灯笼红光映照街巷，人间烟火温暖治愈',
   },
 
   // ─── 6. 人文 Heritage ─── 深靛+古铜+宋体
@@ -174,11 +174,11 @@ export const THEMES: Theme[] = [
       heading: '"Noto Serif SC", serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"Playfair Display", "Noto Serif SC", serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:wght@700;900',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:wght@700;900',
     },
     borderRadius: { button: 4, card: 12, large: 16, pill: 50 },
     letterSpacing: { heading: 1.5, body: 0.3 },
-    moodPrompt: '人文底蕴，深靛蓝配古铜色，历史古迹，水墨长卷，庄重典雅，文化之旅',
+    moodPrompt: '纪录片电影色调，深靛蓝与古铜色，历史古迹在黄昏光线下庄重矗立，老照片质感叠加，文化符号和碑文元素，沉浸式人文旅行纪实风',
   },
 
   // ─── 7. 亲子 Family ─── 粉橙+奶黄+圆润POP
@@ -204,11 +204,11 @@ export const THEMES: Theme[] = [
       heading: '"ZCOOL KuaiLe", "Noto Sans SC", sans-serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"Lilita One", "Noto Sans SC", sans-serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&family=Lilita+One',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&family=Lilita+One',
     },
     borderRadius: { button: 16, card: 28, large: 36, pill: 50 },
     letterSpacing: { heading: 0, body: 0 },
-    moodPrompt: '温馨亲子，粉橙配奶黄，卡通元素，气球彩带，欢乐童趣，全家出游',
+    moodPrompt: '温馨亲子插画风格，粉橙奶黄柔和色调，一家三口手牵手的剪影，气球彩带和棒棒糖装饰，地标建筑卡通化，圆润可爱童趣风，温暖幸福感',
   },
 
   // ─── 8. 家庭游 Roadtrip ─── 沙漠橙+天空蓝+路线元素
@@ -234,11 +234,11 @@ export const THEMES: Theme[] = [
       heading: '"Noto Sans SC", sans-serif',
       body: '"Noto Sans SC", sans-serif',
       number: '"Oswald", "Noto Sans SC", sans-serif',
-      googleImport: 'https://cdn.jsdelivr.net/gh/nickchenyx/gfonts-mirror@main/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Oswald:wght@500;700',
+      googleImport: 'https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Oswald:wght@500;700',
     },
     borderRadius: { button: 10, card: 16, large: 24, pill: 50 },
     letterSpacing: { heading: -0.18, body: 0 },
-    moodPrompt: '自驾冒险，沙漠橙配天空蓝，公路延伸远方，行李箱地图，自由旅途，家庭自驾',
+    moodPrompt: '公路旅行电影画面，沙漠橙与天空蓝，一条公路延伸向远方地标，SUV行驶在旷野之中，行李绑在车顶，地图和指南针元素，自由冒险感，宽银幕构图',
   },
 ]
 

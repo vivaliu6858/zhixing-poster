@@ -172,7 +172,7 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
         <div style={{
           background: p.headerBg, padding: '12px 20px',
           color: p.onHeader, fontSize: 18, fontWeight: 700, fontFamily: f.heading,
-        }}>🏨 畅享首都核心商圈</div>
+        }}>🏨 畅享{product.destination}核心商圈</div>
         <div style={{
           background: p.sectionBg, padding: '20px',
           display: 'flex', gap: 16, alignItems: 'center',
@@ -234,17 +234,12 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
         <div style={{
           background: p.headerBg, padding: '12px 20px',
           color: p.onHeader, fontSize: 18, fontWeight: 700, fontFamily: f.heading,
-        }}>🌸 春日赏花指南</div>
+        }}>🌸 {product.destination}精选体验</div>
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr',
           gap: 12, padding: 16, background: p.card,
         }}>
-          {[
-            { name: '玉渊潭公园', desc: '樱花盛开，粉色浪漫' },
-            { name: '北京植物园', desc: '桃花满园，春意盎然' },
-            { name: '圆明园', desc: '荷花盛放，清幽雅致' },
-            { name: '香山公园', desc: '红叶成林，层林尽染' },
-          ].map(item => (
+          {product.attractions.map(item => (
             <div key={item.name} style={{
               background: p.sectionBg, borderRadius: r.card / 2,
               padding: '12px 16px',
@@ -252,7 +247,7 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
               <div style={{ fontWeight: 700, fontSize: 14, color: p.primary, fontFamily: f.heading }}>
                 {item.name}
               </div>
-              <div style={{ fontSize: 12, color: p.textSub, marginTop: 4 }}>{item.desc}</div>
+              <div style={{ fontSize: 12, color: p.textSub, marginTop: 4 }}>{item.tagline}</div>
             </div>
           ))}
         </div>
@@ -263,21 +258,21 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
         <div style={{
           background: p.headerBg, padding: '12px 20px',
           color: p.onHeader, fontSize: 18, fontWeight: 700, fontFamily: f.heading,
-        }}>🍽 京味美食</div>
+        }}>🍽 {product.destination}特色美食</div>
         <div style={{ padding: '16px 20px', background: p.card }}>
           <div style={{
             background: p.sectionBg, borderRadius: r.card / 2, padding: '12px 16px',
             fontSize: 15, fontWeight: 700, color: p.primary, marginBottom: 12,
             fontFamily: f.heading,
           }}>
-            满清景泰蓝自助火锅 不限量 30-60元/餐
+            品味{product.destination}地道风味
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-            {['北京烤鸭', '老北京炸酱面', '爆肚涮羊肉', '驴打滚'].map(food => (
-              <span key={food} style={{
+            {product.tags.slice(0, 4).map(tag => (
+              <span key={tag} style={{
                 background: '#f5f5f5', color: p.textSub,
                 padding: '6px 14px', borderRadius: r.pill, fontSize: 13,
-              }}>{food}</span>
+              }}>{tag}</span>
             ))}
           </div>
         </div>
