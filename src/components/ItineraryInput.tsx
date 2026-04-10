@@ -158,7 +158,7 @@ export default function ItineraryInput({ onParsed }: Props) {
         <input
           ref={fileRef}
           type="file"
-          accept=".docx,.txt,.md"
+          accept=".docx,.doc,.pdf,.txt,.md"
           style={{ display: 'none' }}
           onChange={e => {
             const file = e.target.files?.[0]
@@ -170,7 +170,7 @@ export default function ItineraryInput({ onParsed }: Props) {
 
       {/* 支持格式提示 */}
       <div style={{ fontSize: 11, color: '#999', marginTop: 6 }}>
-        支持粘贴文字或上传 .docx / .txt 文件，AI自动提取产品信息、景点、价格
+        支持粘贴文字或上传 .pdf / .docx / .doc / .txt 文件，AI自动提取产品信息、景点、价格
       </div>
 
       {/* 错误提示 */}
