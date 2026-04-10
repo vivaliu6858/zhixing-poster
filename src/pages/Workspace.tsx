@@ -3,6 +3,7 @@ import html2canvas from 'html2canvas'
 import type { TourProduct } from '../types'
 import { DEFAULT_PRODUCT } from '../defaultData'
 import FormPanel from '../components/FormPanel'
+import ItineraryInput from '../components/ItineraryInput'
 import PosterPreview from '../components/PosterPreview'
 import { getTheme } from '../themes'
 
@@ -135,6 +136,7 @@ export default function Workspace() {
           }}>✈</div>
           <span style={{ fontSize: 18, fontWeight: 700, color: '#222' }}>智行海报</span>
         </div>
+        <ItineraryInput onParsed={(p) => { setProduct(p); setGenerated(false) }} />
         <FormPanel
           product={product}
           onChange={setProduct}
