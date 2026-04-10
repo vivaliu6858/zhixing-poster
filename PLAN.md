@@ -94,10 +94,10 @@ interface Schedule {
 - [x] npm run build + nginx 验证
 - [x] bug fix: 改景点名时清空旧 imageUrl
 
-### 阶段 C：行程文档解析串联（下一阶段）
-- [ ] 前端加 upload docx/txt 入口
-- [ ] 调 /api/parse 拿结构化 JSON，映射到 TourProduct
-- [ ] 让用户可在预填表单上做微调
+### 阶段 C：行程文档解析串联 ✅ 已完成（2026-04-10）
+- [x] 前端加 ItineraryInput 组件：文字粘贴 + 文件上传(.docx/.txt)
+- [x] 调 /api/parse 拿结构化 JSON，mapToTourProduct 映射到前端 TourProduct
+- [x] 解析后自动填充表单，用户可微调再生成
 
 ### 阶段 D：移动端响应式 + Vercel部署（再下一阶段）
 
