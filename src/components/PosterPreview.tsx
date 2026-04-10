@@ -309,7 +309,7 @@ const PosterPreview = forwardRef<HTMLDivElement, Props>(({ product }, ref) => {
             fontSize: 13, color: p.textSub, display: 'flex', gap: 8,
           }}>
             <span>✈ 南方航空</span>
-            <span>广州→北京 06:30出发</span>
+            <span>{product.departureCity}→{product.destination} 06:30出发</span>
           </div>
           {product.schedules.map((s, i) => (
             <div key={i} style={{
